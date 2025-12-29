@@ -1,6 +1,7 @@
 # cloudflare-dns-rotator
 
 [![CI](https://github.com/6b6t/cloudflare-dns-rotator/actions/workflows/ci.yml/badge.svg)](https://github.com/6b6t/cloudflare-dns-rotator/actions/workflows/ci.yml)
+[![Docker](https://github.com/6b6t/cloudflare-dns-rotator/actions/workflows/docker.yml/badge.svg)](https://github.com/6b6t/cloudflare-dns-rotator/actions/workflows/docker.yml)
 [![Go Report Card](https://goreportcard.com/badge/github.com/6b6t/cloudflare-dns-rotator)](https://goreportcard.com/report/github.com/6b6t/cloudflare-dns-rotator)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -16,6 +17,12 @@ Automatically rotate Cloudflare DNS CNAME records between multiple targets at co
 - **Simple config** - JSON-based configuration file
 
 ## Installation
+
+### Docker (recommended)
+
+```bash
+docker pull ghcr.io/6b6t/cloudflare-dns-rotator:latest
+```
 
 ### From source
 
@@ -125,22 +132,30 @@ sudo systemctl start cloudflare-dns-rotator
 
 #### Docker
 
-```dockerfile
-FROM golang:1.23-alpine AS builder
-WORKDIR /app
-COPY . .
-RUN go build -o cloudflare-dns-rotator .
+Run the official image from GitHub Container Registry:
 
-FROM alpine:latest
-RUN apk --no-cache add ca-certificates
-COPY --from=builder /app/cloudflare-dns-rotator /usr/local/bin/
-ENTRYPOINT ["cloudflare-dns-rotator"]
-CMD ["-config", "/config/config.json"]
+```bash
+docker run -d \
+  --name cloudflare-dns-rotator \
+  --restart unless-stopped \
+  -v $(pwd)/config.json:/config/config.json:ro \
+  ghcr.io/6b6t/cloudflare-dns-rotator:latest
+```
+
+#### Docker Compose
+
+```yaml
+services:
+  cloudflare-dns-rotator:
+    image: ghcr.io/6b6t/cloudflare-dns-rotator:latest
+    container_name: cloudflare-dns-rotator
+    restart: unless-stopped
+    volumes:
+      - ./config.json:/config/config.json:ro
 ```
 
 ```bash
-docker build -t cloudflare-dns-rotator .
-docker run -v $(pwd)/config.json:/config/config.json cloudflare-dns-rotator
+docker compose up -d
 ```
 
 ## Use Cases
