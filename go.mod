@@ -1,6 +1,6 @@
 module cloudflare-dns-rotator
 
-go 1.25
+go 1.22
 
 require github.com/cloudflare/cloudflare-go v0.116.0
 
