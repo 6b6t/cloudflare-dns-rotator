@@ -1,0 +1,12 @@
+# Binary
+cloudflare-dns-rotator
+
+# Config with secrets
+config.json
+
+# IDE
+.idea/
+*.iml
+
+# OS
+.DS_Store

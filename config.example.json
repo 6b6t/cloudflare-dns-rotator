@@ -1,0 +1,13 @@
+{
+  "api_token": "your-cloudflare-api-token-here",
+  "domain": "example.com",
+  "record_name": "app",
+  "targets": [
+    "server1.backend.example.com",
+    "server2.backend.example.com",
+    "server3.backend.example.com"
+  ],
+  "interval": "5m",
+  "proxied": false,
+  "ttl": 1
+}
