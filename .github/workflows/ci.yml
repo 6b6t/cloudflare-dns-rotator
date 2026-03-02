@@ -74,7 +74,7 @@ jobs:
           GOOS=windows GOARCH=amd64 go build -o cloudflare-dns-rotator-windows-amd64.exe .
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: binaries
           path: cloudflare-dns-rotator-*
