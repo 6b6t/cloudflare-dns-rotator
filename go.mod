@@ -2,7 +2,7 @@ module cloudflare-dns-rotator
 
 go 1.22
 
-require github.com/cloudflare/cloudflare-go v0.116.0
+require github.com/cloudflare/cloudflare-go v0.117.0
 
 require (
 	github.com/goccy/go-json v0.10.5 // indirect
