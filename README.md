@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This repository has moved to **[git.6b6t.org/6b6t/cloudflare-dns-rotator](https://git.6b6t.org/6b6t/cloudflare-dns-rotator)**. This GitHub copy is archived and no longer updated.
+
 # cloudflare-dns-rotator
 
 [![CI](https://github.com/6b6t/cloudflare-dns-rotator/actions/workflows/ci.yml/badge.svg)](https://github.com/6b6t/cloudflare-dns-rotator/actions/workflows/ci.yml)
